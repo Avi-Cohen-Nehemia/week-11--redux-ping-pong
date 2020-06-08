@@ -17,8 +17,8 @@ const App = ({ score, handleIncrement1, handleIncrement2, handleReset, server, w
                     </div>
                     <div className="card-footer">
                         <button
-                          disabled={ winner !== "" ? true : false }
-                          className={ "form-control btn btn-success" + (winner !== "" ? " disabled" : "") }
+                          disabled={ winner ? true : false }
+                          className={ "form-control btn btn-success" + (winner ? " disabled" : "") }
                           onClick={ handleIncrement1 }
                         >
                           +
@@ -35,8 +35,8 @@ const App = ({ score, handleIncrement1, handleIncrement2, handleReset, server, w
                     </div>
                     <div className="card-footer">
                         <button
-                          disabled={ winner !== "" ? true : false }
-                          className={ "form-control btn btn-success" + (winner !== "" ? " disabled" : "") }
+                          disabled={ winner ? true : false }
+                          className={ "form-control btn btn-success" + (winner ? " disabled" : "") }
                           onClick={ handleIncrement2 }
                         >
                           +
