@@ -1,7 +1,7 @@
 import React from "react";
 import Player1 from "./components/Player/Player1";
 import Player2 from "./components/Player/Player2";
-import Winner from "./components/Winner/Winner";
+import Winner from "./components/Winner";
 import Reset from "./components/Reset";
 import Header from "./components/Header";
 
