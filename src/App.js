@@ -1,65 +1,27 @@
 import React from "react";
+import Player1 from "./components/Player/Player1";
+import Player2 from "./components/Player/Player2";
+import Winner from "./components/Winner/Winner";
+import Reset from "./components/Reset";
+import Header from "./components/Header";
 
-const App = ({ score, handleIncrement1, handleIncrement2, handleReset, server, winner }) => (
+const App = ({ handleIncrement1, handleIncrement2, handleReset, winner }) => (
     <React.Fragment>
         {/* header */}
-        <header className="jumbotron mt-4 mb-0">
-            <h1>PongPing</h1>
-        </header>
+        <Header/>
 
         {/* scores */}
         <div className="row mb-4">
-            <div className="col-md-6 mt-4">
-                <div className={ "card text-center" + (server ? " bg-dark text-white" : "" )}>
-                    <h5 className="card-header">Player 1</h5>
-                    <div className="card-body">
-                        <p className="card-text display-1">{ score.player1 }</p>
-                    </div>
-                    <div className="card-footer">
-                        <button
-                          disabled={ winner ? true : false }
-                          className={ "form-control btn btn-success" + (winner ? " disabled" : "") }
-                          onClick={ handleIncrement1 }
-                        >
-                          +
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div className="col-md-6 mt-4">
-                <div className={ "card text-center" + (!server ? " bg-dark text-white" : "" )}>
-                    <h5 className="card-header">Player 2</h5>
-                    <div className="card-body">
-                        <p className="card-text display-1">{ score.player2 }</p>
-                    </div>
-                    <div className="card-footer">
-                        <button
-                          disabled={ winner ? true : false }
-                          className={ "form-control btn btn-success" + (winner ? " disabled" : "") }
-                          onClick={ handleIncrement2 }
-                        >
-                          +
-                        </button>
-                    </div>
-                </div>
-            </div>
+          <Player1 handleClick={ handleIncrement1 }/>
+          <Player2 handleClick={ handleIncrement2 }/>
         </div>
 
-        { /* winner message */}
-        { winner ?
-          <h2 className="alert alert-success">Player { winner } wins!</h2>
-        : null
-        }
-        <hr />
+        {/* winner message */}
+        <Winner winner={ winner }/>
+        <hr/>
 
-        { /* reset button */}
-        <button
-          className="btn btn-danger"
-          onClick={ handleReset }
-        >
-          Reset
-        </button>
+        {/* reset button */}
+        <Reset handleClick={ handleReset }/>
     </React.Fragment>
 );
 
