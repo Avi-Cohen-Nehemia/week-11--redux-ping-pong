@@ -47,7 +47,7 @@ const App = ({ score, handleIncrement1, handleIncrement2, handleReset, server, w
         </div>
 
         { /* winner message */}
-        { winner !== "" ?
+        { winner ?
           <h2 className="alert alert-success">Player { winner } wins!</h2>
         : null
         }
