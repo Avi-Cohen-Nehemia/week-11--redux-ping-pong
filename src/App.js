@@ -4,11 +4,12 @@ import Player2 from "./components/Player/Player2";
 import Winner from "./components/Winner";
 import Reset from "./components/Reset";
 import Header from "./components/Header";
+import GamesTable from "./components/GamesTable";
 
-const App = ({ handleIncrement1, handleIncrement2, handleReset, winner }) => (
+const App = ({ handleIncrement1, handleIncrement2, handleReset }) => (
     <React.Fragment>
         {/* header */}
-        <Header/>
+        <Header />
 
         {/* scores */}
         <div className="row mb-4">
@@ -17,11 +18,16 @@ const App = ({ handleIncrement1, handleIncrement2, handleReset, winner }) => (
         </div>
 
         {/* winner message */}
-        <Winner winner={ winner }/>
+        <Winner />
         <hr/>
 
         {/* reset button */}
         <Reset handleClick={ handleReset }/>
+        <hr/>
+
+        {/* games record */}
+        <GamesTable />
+        
     </React.Fragment>
 );
 
