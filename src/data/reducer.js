@@ -11,9 +11,7 @@ const player2 = (state) => ({
 })
 
 const server = (state) => {
-    const player1 = state.player1;
-    const player2 = state.player2;
-    const total = player1 + player2;
+    const total = state.player1 + state.player2;
     const serverPlayer1 = state.serverPlayer1;
     const alternateServer = total <= 40 ? (total % 5 === 0 ? !serverPlayer1 : serverPlayer1) : (total % 2 === 0 ? !serverPlayer1 : serverPlayer1)
 
@@ -35,22 +33,18 @@ const winner = (state) => {
 }
 
 const history = (state) => {
-    const games = state.games;
-    const player1 = state.player1;
-    const player2 = state.player2;
-    const winner = state.winner;
 
-    return winner === "" ? state : {
+    return state.winner === "" ? state : {
         ...state,
-        games: [...games, {
+        games: [...state.games, {
             player_1: {
-                score: player1,
-                won: winner === "1"
+                score: state.player1,
+                won: state.winner === "1"
             },
 
             player_2: {
-                score: player2,
-                won: winner === "2"
+                score: state.player2,
+                won: state.winner === "2"
             }
         }]
     }
