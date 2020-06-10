@@ -9,10 +9,7 @@ import { Provider } from "react-redux";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={ store }>
-      <App
-        handleIncrement1={ () => store.dispatch({type: "INCREMENTPLAYER1"}) }
-        handleIncrement2={ () => store.dispatch({type: "INCREMENTPLAYER2"}) }
-      />
+      <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

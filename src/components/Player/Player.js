@@ -1,6 +1,6 @@
 import React from "react";
 
-const Player = ({ server, score, winner, playerName, handleClick }) => (
+const Player = ({ server, score, winner, playerName, handleIncrement }) => (
     <div className="col-md-6 mt-4">
         <div className={ "card text-center" + (server ? " bg-dark text-white" : "" )}>
             <h5 className="card-header">{ playerName }</h5>
@@ -11,7 +11,7 @@ const Player = ({ server, score, winner, playerName, handleClick }) => (
                 <button
                     disabled={ winner }
                     className={ "form-control btn btn-success" + (winner ? " disabled" : "") }
-                    onClick={ handleClick }
+                    onClick={ handleIncrement }
                 >
                     +
                 </button>

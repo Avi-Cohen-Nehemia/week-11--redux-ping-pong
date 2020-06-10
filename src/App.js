@@ -6,15 +6,15 @@ import Reset from "./components/Reset";
 import Header from "./components/Header";
 import GamesTable from "./components/GamesTable";
 
-const App = ({ handleIncrement1, handleIncrement2, handleReset }) => (
+const App = () => (
     <React.Fragment>
         {/* header */}
         <Header />
 
         {/* scores */}
         <div className="row mb-4">
-          <Player1 handleClick={ handleIncrement1 }/>
-          <Player2 handleClick={ handleIncrement2 }/>
+          <Player1 />
+          <Player2 />
         </div>
 
         {/* winner message */}
