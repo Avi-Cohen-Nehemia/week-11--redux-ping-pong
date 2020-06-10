@@ -6,7 +6,7 @@ import Reset from "./components/Reset";
 import Header from "./components/Header";
 import GamesTable from "./components/GamesTable";
 import { BrowserRouter as Router, Route, } from "react-router-dom";
-import Form from "./components/Form/Form";
+import Form from "./components/Form";
 
 const App = () => (
     <Router>

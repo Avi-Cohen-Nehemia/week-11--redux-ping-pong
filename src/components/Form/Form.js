@@ -42,7 +42,7 @@ class Form extends Component {
     render() {
         return(
             <>
-                <h1 style={{ color: "#0275d8" }}>PingPong</h1>
+                <h1 className="mt-4" style={{ color: "#0275d8" }}>PingPong</h1>
                 <form className="mt-4" onSubmit={ this.handleSubmit }>
                     <div className="form-group">
                         <label for="player1-name"><strong>Player 1 Name</strong></label>
@@ -50,6 +50,7 @@ class Form extends Component {
                             type="text"
                             className="form-control"
                             value={ this.state.player1Name }
+                            onChange={ this.handlePlayer1Name }
                             id="player1-name"
                         />
                     </div>
@@ -60,6 +61,7 @@ class Form extends Component {
                             type="text"
                             className="form-control"
                             value={ this.state.player2Name }
+                            onChange={ this.handlePlayer2Name }
                             id="player2-name"
                         />
                     </div>
@@ -70,6 +72,7 @@ class Form extends Component {
                             type="number"
                             className="form-control"
                             value={ this.state.winningScore }
+                            onChange={ this.handleWinningScore }
                             id="winning-score"
                         />
                     </div>
@@ -80,6 +83,7 @@ class Form extends Component {
                             type="number"
                             className="form-control"
                             value={ this.state.alternateEvery }
+                            onChange={ this.handleAlternateEvery }
                             id="alternate"
                         />
                     </div>

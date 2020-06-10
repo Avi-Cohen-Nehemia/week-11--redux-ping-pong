@@ -13,15 +13,13 @@ const player2 = (state) => ({
 const server = (state) => {
     const total = state.player1 + state.player2;
     const serverPlayer1 = state.serverPlayer1;
-    const alternateServer = total <= 40 ? (total % 5 === 0 ? !serverPlayer1 : serverPlayer1) : (total % 2 === 0 ? !serverPlayer1 : serverPlayer1)
+    const alternateServer = total <= 40 ? (total % state.alternate === 0 ? !serverPlayer1 : serverPlayer1) : (total % 2 === 0 ? !serverPlayer1 : serverPlayer1)
 
     return {
         ...state,
         serverPlayer1: alternateServer,
     }
 }
-
-const aim = 21;
 
 // is there a difference of 2 between points
 const scoreGap = (state) => {
@@ -30,6 +28,7 @@ const scoreGap = (state) => {
 
 // has the minimum winning score been reached
 const winningScore = (state) => {
+    const aim = state.winningScore;
     return state.player1 >= aim || state.player2 >= aim;
 }
 
