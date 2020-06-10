@@ -5,30 +5,29 @@ import Winner from "./components/Winner";
 import Reset from "./components/Reset";
 import Header from "./components/Header";
 import GamesTable from "./components/GamesTable";
+import { BrowserRouter as Router, Route, } from "react-router-dom";
 
 const App = () => (
-    <React.Fragment>
-        {/* header */}
+    <Router>
+
+      <Route exact path="/game">
         <Header />
 
-        {/* scores */}
         <div className="row mb-4">
           <Player1 />
           <Player2 />
         </div>
 
-        {/* winner message */}
         <Winner />
         <hr/>
 
-        {/* reset button */}
         <Reset />
         <hr/>
 
-        {/* games record */}
         <GamesTable />
-        
-    </React.Fragment>
+      </Route>
+      
+    </Router>
 );
 
 export default App;
