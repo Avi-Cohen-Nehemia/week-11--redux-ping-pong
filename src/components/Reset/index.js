@@ -1,12 +1,11 @@
-import React from "react";
+import { connect } from "react-redux";
+import Reset from "./Reset";
+import { reset } from "../../data/actions";
 
-const Reset = ({ handleClick }) => (
-    <button
-        className="btn btn-danger"
-        onClick={ handleClick }
-    >
-        Reset
-    </button>
-);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleReset: () => dispatch(reset()),
+    };
+};
 
-export default Reset;
+export default connect(null, mapDispatchToProps)(Reset);

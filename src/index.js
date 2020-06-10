@@ -12,7 +12,6 @@ ReactDOM.render(
       <App
         handleIncrement1={ () => store.dispatch({type: "INCREMENTPLAYER1"}) }
         handleIncrement2={ () => store.dispatch({type: "INCREMENTPLAYER2"}) }
-        handleReset={ () => store.dispatch({type: "RESET"}) }
       />
     </Provider>
   </React.StrictMode>,

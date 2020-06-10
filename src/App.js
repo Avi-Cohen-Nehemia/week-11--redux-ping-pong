@@ -22,7 +22,7 @@ const App = ({ handleIncrement1, handleIncrement2, handleReset }) => (
         <hr/>
 
         {/* reset button */}
-        <Reset handleClick={ handleReset }/>
+        <Reset />
         <hr/>
 
         {/* games record */}
