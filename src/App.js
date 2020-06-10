@@ -6,9 +6,12 @@ import Reset from "./components/Reset";
 import Header from "./components/Header";
 import GamesTable from "./components/GamesTable";
 import { BrowserRouter as Router, Route, } from "react-router-dom";
+import Form from "./components/Form/Form";
 
 const App = () => (
     <Router>
+      
+      <Route exact path="/" component={ Form } />
 
       <Route exact path="/game">
         <Header />
@@ -26,7 +29,7 @@ const App = () => (
 
         <GamesTable />
       </Route>
-      
+
     </Router>
 );
 
