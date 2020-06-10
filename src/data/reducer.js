@@ -21,14 +21,27 @@ const server = (state) => {
     }
 }
 
-const winner = (state) => {
-    const player1 = state.player1;
-    const player2 = state.player2;
+const aim = 21;
 
+// is there a difference of 2 between points
+const scoreGap = (state) => {
+    return Math.abs(state.player1 - state.player2) >= 2;
+}
+
+// has the minimum winning score been reached
+const winningScore = (state) => {
+    return state.player1 >= aim || state.player2 >= aim;
+}
+
+// work out who's won
+const getWinner = (state) => {
+    return state.player1 > state.player2 ? "1" : "2";
+}
+
+const winner = (state) => {
     return {
         ...state,
-        winner: player1 >= 21 && player2 <= player1 - 2 ? "1" : "",
-        // winner: (player2 + 1) >= 21 && player1 <= player2 - 1 ? "2" : "",
+        winner: winningScore(state) && scoreGap(state) ? getWinner(state) : ""
     }
 }
 
