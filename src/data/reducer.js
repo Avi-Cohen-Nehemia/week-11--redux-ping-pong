@@ -50,7 +50,7 @@ const history = (state) => {
         ...state,
         games: [...state.games, {
             winner: state.winner,
-            
+
             player_1: {
                 score: state.player1,
                 won: state.winner === state.player1Name
@@ -64,13 +64,15 @@ const history = (state) => {
     }
 }
 
+// saving the data from the form and setting default
+// values in case the inputs were left empty
 const saveSettings = (state, action) => {
     return {
         ...state,
-        player1Name: action.data.player1Name,
-        player2Name: action.data.player2Name,
-        winningScore: action.data.winningScore,
-        alternateEvery: action.data.alternateEvery
+        player1Name: action.data.player1Name ? action.data.player1Name : "Player 1",
+        player2Name: action.data.player2Name ? action.data.player1Name : "Player 2",
+        winningScore: action.data.winningScore !== "" ? action.data.winningScore : 21,
+        alternateEvery: action.data.alternateEvery !== "" ? action.data.alternateEvery : 5
     };
 }
 
