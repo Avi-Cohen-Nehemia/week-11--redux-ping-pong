@@ -4,7 +4,7 @@ import { handleIncrement1 } from "../../data/actions";
 
 const mapStateToProps = (state) => {
     return {
-        playerName: "Player 1",
+        playerName: state.player1Name ? state.player1Name : "Player 1",
         server: state.serverPlayer1,
         winner: state.winner,
         score: state.player1

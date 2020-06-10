@@ -7,16 +7,17 @@ class Form extends Component {
         super(props);
 
         this.state = {
-            player1Name: "",
-            player2Name: "",
-            winningScore: 21,
-            alternateEvery: 5,
+            player1Name: props.player1Name,
+            player2Name: props.player2Name,
+            winningScore: props.winningScore,
+            alternateEvery: props.alternateEvery,
         };
 
         this.handlePlayer1Name = this.handlePlayer1Name.bind(this);
         this.handlePlayer2Name = this.handlePlayer2Name.bind(this);
         this.handleWinningScore = this.handleWinningScore.bind(this);
         this.handleAlternateEvery = this.handleAlternateEvery.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handlePlayer1Name(e) {
@@ -37,6 +38,7 @@ class Form extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.props.handleSubmit(this.state);
     }
 
     render() {
@@ -45,7 +47,7 @@ class Form extends Component {
                 <h1 className="mt-4" style={{ color: "#0275d8" }}>PingPong</h1>
                 <form className="mt-4" onSubmit={ this.handleSubmit }>
                     <div className="form-group">
-                        <label for="player1-name"><strong>Player 1 Name</strong></label>
+                        <label htmlFor="player1-name"><strong>Player 1 Name</strong></label>
                         <input
                             type="text"
                             className="form-control"
@@ -56,7 +58,7 @@ class Form extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label for="player2-name"><strong>Player 2 Name</strong></label>
+                        <label htmlFor="player2-name"><strong>Player 2 Name</strong></label>
                         <input
                             type="text"
                             className="form-control"
@@ -67,7 +69,7 @@ class Form extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label for="winning-score"><strong>Winning Score</strong></label>
+                        <label htmlFor="winning-score"><strong>Winning Score</strong></label>
                         <input
                             type="number"
                             className="form-control"
@@ -78,7 +80,7 @@ class Form extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label for="alternate"><strong>Alternate Every</strong></label>
+                        <label htmlFor="alternate"><strong>Alternate Every</strong></label>
                         <input
                             type="number"
                             className="form-control"

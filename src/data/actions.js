@@ -1,3 +1,10 @@
+export const saveSettings = (data) => {
+    return {
+        type: "SAVE_SETTINGS",
+        data: data
+    };
+};
+
 export const handleIncrement1 = () => {
     return {
         type: "INCREMENTPLAYER1",

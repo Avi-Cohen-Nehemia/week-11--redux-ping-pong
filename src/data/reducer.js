@@ -13,7 +13,7 @@ const player2 = (state) => ({
 const server = (state) => {
     const total = state.player1 + state.player2;
     const serverPlayer1 = state.serverPlayer1;
-    const alternateServer = total <= 40 ? (total % state.alternate === 0 ? !serverPlayer1 : serverPlayer1) : (total % 2 === 0 ? !serverPlayer1 : serverPlayer1)
+    const alternateServer = total <= 40 ? (total % state.alternateEvery === 0 ? !serverPlayer1 : serverPlayer1) : (total % 2 === 0 ? !serverPlayer1 : serverPlayer1)
 
     return {
         ...state,
@@ -34,13 +34,13 @@ const winningScore = (state) => {
 
 // work out who's won
 const getWinner = (state) => {
-    return state.player1 > state.player2 ? "1" : "2";
+    return state.player1 > state.player2 ? state.player1Name : state.player2Name;
 }
 
 const winner = (state) => {
     return {
         ...state,
-        winner: winningScore(state) && scoreGap(state) ? getWinner(state) : ""
+        winner: (winningScore(state) && scoreGap(state)) ? getWinner(state) : ""
     }
 }
 
@@ -49,22 +49,35 @@ const history = (state) => {
     return state.winner === "" ? state : {
         ...state,
         games: [...state.games, {
+            winner: state.winner,
+            
             player_1: {
                 score: state.player1,
-                won: state.winner === "1"
+                won: state.winner === state.player1Name
             },
 
             player_2: {
                 score: state.player2,
-                won: state.winner === "2"
+                won: state.winner === state.player2Name
             }
         }]
     }
 }
 
+const saveSettings = (state, action) => {
+    return {
+        ...state,
+        player1Name: action.data.player1Name,
+        player2Name: action.data.player2Name,
+        winningScore: action.data.winningScore,
+        alternateEvery: action.data.alternateEvery
+    };
+}
+
 const reducer = (state, action) => {
   
     switch (action.type) {
+        case "SAVE_SETTINGS": return saveSettings(state, action);
         case "INCREMENTPLAYER1": return history(winner(server(player1(state))));     
         case "INCREMENTPLAYER2": return history(winner(server(player2(state))));
         case "RESET": return {

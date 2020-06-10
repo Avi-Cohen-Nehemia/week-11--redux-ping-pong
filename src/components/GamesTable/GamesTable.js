@@ -14,7 +14,7 @@ const GamesTable = ({ games }) => (
             <tr key={ index }>
                 <td>{ game.player_1.score }</td>
                 <td>{ game.player_2.score }</td>
-                <td>{ game.player_1.won === true ? "player 1" : "player 2" }</td>
+                <td>{ game.winner }</td>
             </tr>
         )) }
         </tbody>
