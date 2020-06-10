@@ -68,8 +68,10 @@ const reducer = (state, action) => {
     switch (action.type) {
         case "INCREMENTPLAYER1": return history(winner(server(player1(state))));     
         case "INCREMENTPLAYER2": return history(winner(server(player2(state))));
-        case "RESET": return initialState;
-
+        case "RESET": return {
+            ...initialState,
+            games: state.games
+        }
         default: return state;
     }
 };
