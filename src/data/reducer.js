@@ -85,7 +85,7 @@ const saveSettings = (state, action) => {
     return {
         ...state,
         player1Name: action.data.player1Name ? action.data.player1Name : "Player 1",
-        player2Name: action.data.player2Name ? action.data.player1Name : "Player 2",
+        player2Name: action.data.player2Name ? action.data.player2Name : "Player 2",
         winningScore: action.data.winningScore !== "" ? action.data.winningScore : 21,
         alternateEvery: action.data.alternateEvery !== "" ? action.data.alternateEvery : 5
     };
@@ -99,6 +99,10 @@ const reducer = (state, action) => {
         case "INCREMENTPLAYER2": return history(winner(server(player2(state))));
         case "RESET": return {
             ...initialState,
+            player1Name: state.player1Name,
+            player2Name: state.player2Name,
+            winningScore: state.winningScore,
+            alternateEvery: state.alternateEvery,
             games: state.games
         }
         default: return state;
