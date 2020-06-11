@@ -7,7 +7,8 @@ const initialState = {
     player2: 0,
     serverPlayer1: true,
     winner: "",
-    games: []
+    games: [],
+    gameID: null
 };
 
 export default initialState;

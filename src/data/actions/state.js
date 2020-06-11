@@ -1,7 +1,7 @@
-export const saveSettings = (data) => {
+export const saveGameData = (data) => {
     return {
-        type: "SAVE_SETTINGS",
-        data: data
+        type: "SAVE_GAME_DATA",
+        ...data
     };
 };
 

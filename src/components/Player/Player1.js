@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Player from "./Player";
-import { handleIncrement1 } from "../../data/actions";
+import { patchScore } from "../../data/actions/api";
 
 const mapStateToProps = (state) => {
     return {
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleIncrement: () => dispatch(handleIncrement1()),
+        handleIncrement: () => dispatch(patchScore(1)),
     };
 };
 
