@@ -1,11 +1,11 @@
 import React from "react";
 
-const GamesTable = ({ games }) => (
+const GamesTable = ({ games, player1Name, player2Name }) => (
     <table className="table mt-3 justify-content-center">
         <thead className="thead-dark">
             <tr>
-                <th scope="col">Player 1</th>
-                <th scope="col">Player 2</th>
+                <th scope="col">{ `${player1Name}'s score` }</th>
+                <th scope="col">{ `${player2Name}'s score` }</th>
                 <th scope="col">Winner</th>
             </tr>
         </thead>
