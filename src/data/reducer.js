@@ -16,14 +16,14 @@ const standOff = (state, number) => {
     return total(state) >= (number * 2 - 2);
 }
 
+const serverPlayer1 = (state) => state.serverPlayer1;
+
 const normalServe = (state) => {
-    const serverPlayer1 = state.serverPlayer1;
-    return total(state) % state.alternateEvery === 0 ? !serverPlayer1 : serverPlayer1;
+    return total(state) % state.alternateEvery === 0 ? !serverPlayer1(state) : serverPlayer1(state);
 }
 
 const standOffServe = (state) => {
-    const serverPlayer1 = state.serverPlayer1;
-    return total(state) % 2 === 0 ? !serverPlayer1 : serverPlayer1;
+    return total(state) % 2 === 0 ? !serverPlayer1(state) : serverPlayer1(state);
 }
 
 const server = (state) => {
