@@ -10,10 +10,25 @@ const player2 = (state) => ({
     player2: state.player2 + 1
 })
 
-const server = (state) => {
+const standOff = (state, number) => {
+    return state.player1 + state.player2 >= (number * 2 - 2);
+}
+
+const normalServe = (state) => {
     const total = state.player1 + state.player2;
     const serverPlayer1 = state.serverPlayer1;
-    const alternateServer = total <= 40 ? (total % state.alternateEvery === 0 ? !serverPlayer1 : serverPlayer1) : (total % 2 === 0 ? !serverPlayer1 : serverPlayer1)
+    return total % state.alternateEvery === 0 ? !serverPlayer1 : serverPlayer1;
+}
+
+const standOffServe = (state) => {
+    const total = state.player1 + state.player2;
+    const serverPlayer1 = state.serverPlayer1;
+    return total % 2 === 0 ? !serverPlayer1 : serverPlayer1;
+}
+
+const server = (state) => {
+    const aim = state.winningScore;
+    const alternateServer = standOff(state, aim) ? standOffServe(state) : normalServe(state);
 
     return {
         ...state,
