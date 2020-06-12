@@ -26,13 +26,15 @@ export const patchScore = (player) => {
     };
 }
 
-export const postGameSameSettings = (data) => {
+export const postGameSameSettings = () => {
     return (dispatch, getState) => {
+        let { player1Name, player2Name, winningScore, alternateEvery } = getState();
+
         axios.post("/games",{
-            player_1: getState().player1Name,
-            player_2: getState().player2Name,
-            winning_score: getState().winningScore,
-            change_serve: getState().alternateEvery
+            player_1: player1Name, // same as 'getState().player1Name' before destrcturing
+            player_2: player2Name,
+            winning_score: winningScore,
+            change_serve: alternateEvery
         }).then(({ data }) => {
             dispatch(saveGameData(data.data));
         })
