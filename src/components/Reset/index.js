@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import Reset from "./Reset";
-import { reset } from "../../data/actions/state";
+import { postGameSameSettings } from "../../data/actions/api";
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleReset: () => dispatch(reset()),
+        handleReset: () => dispatch(postGameSameSettings()),
     };
 };
 

@@ -16,7 +16,7 @@ export const postGame = (data) => {
 
 export const patchScore = (player) => {
     return (dispatch, getState) => {
-        const id = getState().gameID;
+        const id = getState().id;
 
         axios.patch(`games/${id}/score`, {
             player: player
@@ -24,4 +24,17 @@ export const patchScore = (player) => {
             dispatch(saveGameData(data.data));
         });
     };
+}
+
+export const postGameSameSettings = (data) => {
+    return (dispatch, getState) => {
+        axios.post("/games",{
+            player_1: getState().player1Name,
+            player_2: getState().player2Name,
+            winning_score: getState().winningScore,
+            change_serve: getState().alternateEvery
+        }).then(({ data }) => {
+            dispatch(saveGameData(data.data));
+        })
+    }
 }
