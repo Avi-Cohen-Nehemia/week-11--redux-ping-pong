@@ -16,7 +16,7 @@ export const postGame = (data) => {
 
 export const patchScore = (player) => {
     return (dispatch, getState) => {
-        const id = getState().id;
+        const id = getState().gameID;
 
         axios.patch(`games/${id}/score`, {
             player: player
