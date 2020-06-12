@@ -1,3 +1,10 @@
+// const history = (state, { player_1, player_2 }) => {
+//     return !player_1.won && !player_2.won ? state : {
+//         ...state,
+//         games: [...state.games, {game}]
+//     }
+// }
+
 // creating/updating a game
 const saveGameData = (state, { player_1, player_2, winning_score, change_serve, id }) => {
     return {
@@ -10,7 +17,7 @@ const saveGameData = (state, { player_1, player_2, winning_score, change_serve, 
         winningScore: winning_score,
         alternateEvery: change_serve,
         serverPlayer1: player_1.serving,
-        winner: player_1.won ? player_1.name : (player_2.won ? player_2.name : "")
+        winner: player_1.won ? player_1.name : (player_2.won ? player_2.name : ""),
     };
 }
 

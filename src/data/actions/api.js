@@ -1,6 +1,14 @@
 import axios from "../../axios";
 import { saveGameData } from "./state";
 
+export const getGames = () => {
+    return (dispatch) => {
+        axios.get("/games").then(({ data }) => {
+            dispatch(saveGameData(data.data));
+        })
+    }
+}
+
 export const postGame = (data) => {
     return (dispatch) => {
         axios.post("/games",{
